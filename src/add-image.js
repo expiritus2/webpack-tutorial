@@ -1,6 +1,7 @@
 import Kiwi from './components/kiwi-image/kiwi.jpg';
+import Orange from './components/kiwi-image/orange.jpeg';
 
-function addImage() {
+export function addImage() {
     const img = document.createElement('img');
     img.alt = 'Kiwi';
     img.width = 300;
@@ -10,4 +11,12 @@ function addImage() {
     body.appendChild(img);
 }
 
-export default addImage;
+export function addImage2() {
+    const img = document.createElement('img');
+    img.alt = 'Orange';
+    img.width = 300;
+    img.src = Orange;
+
+    const body = document.querySelector('body');
+    body.appendChild(img);
+}

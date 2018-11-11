@@ -10,7 +10,7 @@ module.exports = {
         'kiwi': './src/kiwi.js'
     },
     output: {
-        filename: "[name].[contenthash].js",
+        filename: "js/[name].[contenthash].js",
         path: path.resolve(__dirname, './dist'),
         publicPath: ""
     },
@@ -25,9 +25,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg)$/,
+                test: /\.(png|jpg|jpeg)$/,
                 use: [
-                    'file-loader'
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[name].[ext]'
+                        }
+                    }
+
                 ],
             },
             {
@@ -64,7 +70,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: 'css/[name].[contenthash].css'
         }),
         new CleanWebpackPlugin('dist'),
         new HtmlWebpackPlugin({
@@ -80,6 +86,10 @@ module.exports = {
             title: 'Kiwi',
             template: 'src/page-template.hbs',
             description: 'Kiwi'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
         })
     ]
 };
